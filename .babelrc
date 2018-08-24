@@ -1,0 +1,17 @@
+{
+	"plugins": [
+		"transform-class-properties",
+		"transform-object-assign",
+		"transform-object-rest-spread"
+	],
+	"presets": [
+		"@babel/preset-typescript",
+		[
+			"env", {
+			"targets": {
+					"node": "8.10"
+				}
+			}
+		]
+	]
+}
