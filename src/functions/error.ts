@@ -12,7 +12,7 @@ const handler: Handler<APIGatewayEvent, Response> = async (
 	context: Context,
 	callback: Callback
 ) => {
-	throw new Error('TEST ERROR 1!')
+	throw new Error('TEST ERROR 2!')
 
 	//return new Error('TEST ERROR 2!')
 }

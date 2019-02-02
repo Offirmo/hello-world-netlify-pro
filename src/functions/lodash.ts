@@ -1,21 +1,19 @@
 // see https://www.netlify.com/docs/functions/
 
-import { Handler, Context, Callback, APIGatewayEvent } from 'aws-lambda'
-import * as _ from 'lodash'
+import {
+	APIGatewayEvent,
+	Context,
+	Response,
+	NetlifyHandler,
+} from './sub_code/types'
 
-interface Response {
-	statusCode: number;
-	body: string;
-}
+import { capitalize } from './sub_code'
 
-const handler: Handler<APIGatewayEvent, Response> = async (
-	event: APIGatewayEvent,
-	context: Context,
-	callback: Callback
-) => {
+const handler: NetlifyHandler = async (): Promise<Response> => {
+
 	return {
 		statusCode: 200,
-		body: _.capitalize('LODASH'),
+		body: capitalize('LODASH SUB'),
 	}
 }
 

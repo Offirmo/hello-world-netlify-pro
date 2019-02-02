@@ -1,17 +1,17 @@
 // https://www.netlify.com/docs/functions/
 // https://github.com/sw-yx/create-react-app-lambda-typescript/blob/master/src/lambda/hello.ts
-import { Handler, Context, Callback, APIGatewayEvent } from 'aws-lambda'
+import {
+	APIGatewayEvent,
+	Context,
+	Response,
+	NetlifyHandler,
+} from './sub_code/types'
 
-interface Response {
-	statusCode: number;
-	body: string;
-}
 
-const handler: Handler<APIGatewayEvent, Response> = async (
+const handler: NetlifyHandler = async (
 	event: APIGatewayEvent,
 	context: Context,
-	callback: Callback
-) => {
+): Promise<Response> => {
 	const all_the_things = JSON.stringify({
 		context,
 		event,
