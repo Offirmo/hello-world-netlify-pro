@@ -1,6 +1,19 @@
 // see https://www.netlify.com/docs/functions/
 
-exports.handler = function(event, context, callback) {
+import { Handler, Context, Callback, APIGatewayEvent } from 'aws-lambda'
+
+interface Response {
+	statusCode: number;
+	body: string;
+}
+
+const foo: number = 'bar'
+
+const handler: Handler<APIGatewayEvent, Response> = async (
+	event: APIGatewayEvent,
+	context: Context,
+	callback: Callback
+) => {
 	if (!context.clientContext.user)
 		return callback(new Error('No/bad/outdated token!'))
 
@@ -22,8 +35,10 @@ exports.handler = function(event, context, callback) {
 
 	console.log(all_the_things)
 
-	callback(null, {
+	return {
 		statusCode: 200,
 		body: all_the_things,
-	})
+	}
 }
+
+export { handler }

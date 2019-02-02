@@ -1,7 +1,17 @@
 // copied from https://www.netlify.com/docs/functions/
 
-exports.handler = async function(event, context, callback) {
+import { Handler, Context, Callback, APIGatewayEvent } from 'aws-lambda'
 
+interface Response {
+	statusCode: number;
+	body: string;
+}
+
+const handler: Handler<APIGatewayEvent, Response> = async (
+	event: APIGatewayEvent,
+	context: Context,
+	callback: Callback
+) => {
 	console.log('hello')
 	console.info('hello')
 	console.warn('hello')
@@ -12,3 +22,5 @@ exports.handler = async function(event, context, callback) {
 		body: "Hello, TypeScript World!"
 	}
 }
+
+export { handler }

@@ -1,6 +1,7 @@
-// https://www.netlify.com/docs/functions/
-// https://github.com/sw-yx/create-react-app-lambda-typescript/blob/master/src/lambda/hello.ts
+// see https://www.netlify.com/docs/functions/
+
 import { Handler, Context, Callback, APIGatewayEvent } from 'aws-lambda'
+import * as _ from 'lodash'
 
 interface Response {
 	statusCode: number;
@@ -12,17 +13,9 @@ const handler: Handler<APIGatewayEvent, Response> = async (
 	context: Context,
 	callback: Callback
 ) => {
-	const all_the_things = JSON.stringify({
-		context,
-		event,
-		env: process.env,
-	}, null, 2)
-
-	console.log(all_the_things)
-
 	return {
 		statusCode: 200,
-		body: all_the_things,
+		body: _.capitalize('LODASH'),
 	}
 }
 
